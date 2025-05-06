@@ -1,3 +1,4 @@
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
 // Modelo de Pokémon
@@ -67,7 +68,7 @@ fun calcularDano(atacante: Pokemon, defensor: Pokemon): Int {
 // Batalha de Pokémon
 fun batalhaPokemon(p1: Pokemon, p2: Pokemon): Pokemon {
     println("\n⚡ Batalha: ${p1.nome} (HP: ${p1.hp}) vs ${p2.nome} (HP: ${p2.hp})")
-
+    Thread.sleep(3000)
     var atacante = if (p1.velocidade >= p2.velocidade) p1 else p2
     var defensor = if (atacante == p1) p2 else p1
 
@@ -75,10 +76,11 @@ fun batalhaPokemon(p1: Pokemon, p2: Pokemon): Pokemon {
         val dano = calcularDano(atacante, defensor)
         defensor.hp -= dano
         println("${atacante.nome} atacou ${defensor.nome} causando $dano de dano! (HP de ${defensor.nome}: ${defensor.hp.coerceAtLeast(0)})")
-
+        Thread.sleep(3000)
         if (defensor.hp <= 0) {
             println("🏆 ${atacante.nome} venceu a batalha!\n")
             return atacante
+            Thread.sleep(3000)
         }
 
         // Troca de papéis
@@ -93,7 +95,7 @@ fun batalhaPokemon(p1: Pokemon, p2: Pokemon): Pokemon {
 // Batalha entre jogadores
 fun batalhaJogadores(jogador1: Jogador, jogador2: Jogador) {
     println("\n🔥 Iniciando batalha entre ${jogador1.nickname} e ${jogador2.nickname}")
-
+    Thread.sleep(3000)
     var vitorias1 = 0
     var vitorias2 = 0
 
@@ -103,6 +105,7 @@ fun batalhaJogadores(jogador1: Jogador, jogador2: Jogador) {
         val poke2 = jogador2.pokemon1.copy()
         val vencedor = batalhaPokemon(poke1, poke2)
         if (vencedor.nome == poke1.nome) vitorias1++ else vitorias2++
+        Thread.sleep(3000)
     }
 
     // Batalha 2: pokemon2 vs pokemon2
@@ -111,6 +114,7 @@ fun batalhaJogadores(jogador1: Jogador, jogador2: Jogador) {
         val poke2 = jogador2.pokemon2.copy()
         val vencedor = batalhaPokemon(poke1, poke2)
         if (vencedor.nome == poke1.nome) vitorias1++ else vitorias2++
+        Thread.sleep(3000)
     }
 
     // Batalha 3: pokemon3 vs pokemon3
@@ -119,11 +123,15 @@ fun batalhaJogadores(jogador1: Jogador, jogador2: Jogador) {
         val poke2 = jogador2.pokemon3.copy()
         val vencedor = batalhaPokemon(poke1, poke2)
         if (vencedor.nome == poke1.nome) vitorias1++ else vitorias2++
+        Thread.sleep(3000)
     }
 
     println("🎖️ Resultado Final 🎖️")
+    Thread.sleep(3000)
     println("${jogador1.nickname}: $vitorias1 vitória(s)")
+    Thread.sleep(3000)
     println("${jogador2.nickname}: $vitorias2 vitória(s)")
+    Thread.sleep(3000)
 
     when {
         vitorias1 > vitorias2 -> println("🏅 ${jogador1.nickname} é o campeão!")
