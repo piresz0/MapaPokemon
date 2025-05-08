@@ -1,17 +1,18 @@
 import kotlin.concurrent.thread
 import kotlin.random.Random
-
-// Modelo de Pokémon
+// Renan Pires Da Silva Ra: 60001230
+// Ruan Lopes Ra: 60300528
+// Pokémon
 data class Pokemon(
     val nome: String,
-    val tipos: Map<String, String>, // Tipos e suas vantagens como string delimitada (ex.: "AGUA,TERRA,ROCHA")
+    val tipos: Map<String, String>,
     var hp: Int,
     val ataque: Int,
     val defesa: Int,
     val velocidade: Int
 )
 
-// Modelo de Jogador
+// Jogador
 data class Jogador(
     val nickname: String,
     val pokemon1: Pokemon,
@@ -19,7 +20,7 @@ data class Jogador(
     val pokemon3: Pokemon
 )
 
-// Base de vantagens de tipos
+// vantagens de tipos
 val vantagensTipos = mapOf(
     "GRAMA" to "AGUA,TERRA,ROCHA",
     "VENENO" to "GRAMA,FADA",
@@ -140,7 +141,7 @@ fun batalhaJogadores(jogador1: Jogador, jogador2: Jogador) {
     }
 }
 
-// Banco de Pokémons disponíveis
+// Pokémons
 val pokemonsDisponiveis = mapOf(
     1 to Pokemon("Bulbasaur", mapOf("GRAMA" to "AGUA,TERRA,ROCHA", "VENENO" to "GRAMA,FADA"), 120, 52, 50, 45),
     2 to Pokemon("Ivysaur", mapOf("GRAMA" to "AGUA,TERRA,ROCHA", "VENENO" to "GRAMA,FADA"), 130, 62, 60, 60),
@@ -295,7 +296,7 @@ val pokemonsDisponiveis = mapOf(
     151 to Pokemon("Mew", mapOf("PSIQUICO" to "LUTADOR,VENENO"), 150, 100, 100, 100)
 )
 
-// Função para escolher Pokémons
+// escolher Pokémons
 fun escolherTime(nomeJogador: String): Jogador {
     println("\n👤 $nomeJogador, escolha seu time (3 Pokémon).")
     println("Digite o número do Pokémon (de 1 a 151). Exemplo: 1 para Bulbasaur, 25 para Pikachu.")
@@ -340,7 +341,6 @@ fun escolherTime(nomeJogador: String): Jogador {
     return Jogador(nomeJogador, pokemon1, pokemon2, pokemon3)
 }
 
-// MAIN
 fun main() {
     println("🎮 Bem-vindo ao Pokémon Kotlin Battle!")
 
