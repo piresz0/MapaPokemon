@@ -1,7 +1,7 @@
 import kotlin.concurrent.thread
 import kotlin.random.Random
 // Renan Pires Da Silva Ra: 60001230
-// Ruan Lopes Ra: 60300528
+// Rhuan Lopes Ra: 60300528
 // Pokémon
 data class Pokemon(
     val nome: String,
